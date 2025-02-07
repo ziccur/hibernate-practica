@@ -5,94 +5,65 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "CLASSIFICACIO")
-public class Classificacio {
+@Table(name = "LLIGA")
+public class Lliga {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_classificacio")
-    private Long idClassificacio;
+    @Column(name = "id_lliga")
+    private Long idLliga;
 
-    @ManyToOne
-    @JoinColumn(name = "id_equip", nullable = false)
-    private Equip equip;
+    @Column(name = "nom_lliga", nullable = false)
+    private String nomLliga;
 
-    @Column(name = "punts", nullable = false)
-    private Integer punts;
-
-    @Column(name = "partits_jugats", nullable = false)
-    private Integer partitsJugats;
-
-    @Column(name = "victories", nullable = false)
-    private Integer victories;
+    @Column(name = "temporada", nullable = false)
+    private String temporada;
 
     // Constructores, getters y setters
 
-    public Classificacio() {
+    public Lliga() {
     }
 
-    public Classificacio(Equip equip, Integer punts, Integer partitsJugats, Integer victories) {
-        this.equip = equip;
-        this.punts = punts;
-        this.partitsJugats = partitsJugats;
-        this.victories = victories;
+    public Lliga(String nomLliga, String temporada) {
+        this.nomLliga = nomLliga;
+        this.temporada = temporada;
     }
 
     // Getters y Setters
 
-    public Long getIdClassificacio() {
-        return idClassificacio;
+    public Long getIdLliga() {
+        return idLliga;
     }
 
-    public void setIdClassificacio(Long idClassificacio) {
-        this.idClassificacio = idClassificacio;
+    public void setIdLliga(Long idLliga) {
+        this.idLliga = idLliga;
     }
 
-    public Equip getEquip() {
-        return equip;
+    public String getNomLliga() {
+        return nomLliga;
     }
 
-    public void setEquip(Equip equip) {
-        this.equip = equip;
+    public void setNomLliga(String nomLliga) {
+        this.nomLliga = nomLliga;
     }
 
-    public Integer getPunts() {
-        return punts;
+    public String getTemporada() {
+        return temporada;
     }
 
-    public void setPunts(Integer punts) {
-        this.punts = punts;
-    }
-
-    public Integer getPartitsJugats() {
-        return partitsJugats;
-    }
-
-    public void setPartitsJugats(Integer partitsJugats) {
-        this.partitsJugats = partitsJugats;
-    }
-
-    public Integer getVictories() {
-        return victories;
-    }
-
-    public void setVictories(Integer victories) {
-        this.victories = victories;
+    public void setTemporada(String temporada) {
+        this.temporada = temporada;
     }
 
     @Override
     public String toString() {
-        return "Classificacio{" +
-                "idClassificacio=" + idClassificacio +
-                ", equip=" + (equip != null ? equip.getIdEquip() : "null") +
-                ", punts=" + punts +
-                ", partitsJugats=" + partitsJugats +
-                ", victories=" + victories +
+        return "Lliga{" +
+                "idLliga=" + idLliga +
+                ", nomLliga='" + nomLliga + '\'' +
+                ", temporada='" + temporada + '\'' +
                 '}';
     }
 }
