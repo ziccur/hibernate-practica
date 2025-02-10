@@ -12,10 +12,10 @@
         <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
 
         <!-- Conexión. Añadir ?createDatabaseIfNotExist=true para crear la BBDD  -->
-        <property name="connection.url">jdbc:mariadb://localhost:3306/tasks?createDatabaseIfNotExist=true</property>
+        <property name="connection.url">jdbc:mariadb://localhost:3306/PracticaLliga?createDatabaseIfNotExist=true</property>
 
         <!-- Usuario y password de la BBDD -->
-        <property name="connection.username">root</property>
+        <property name="connection.username">Yeray</property>
         <property name="connection.password">1234</property>
 
         <!-- Dialecto dentro del conector. Importante para claves ajenas -->
@@ -45,7 +45,7 @@
         <!-- Ficheros de mapeo. Pueden combinarse -->
 
         <!-- Mapeo de la entidad Lliga usando un archivo .hbm.xml -->
-        <mapping resource="com/iticbcn/yerayreyes/model/Lliga.hbm.xml"/>
+        <mapping resource="com/iticbcn/yerayreyes/Lliga.hbm.xml"/>
 
         <!-- Mapeo de las entidades mapeadas con anotaciones -->
         <mapping class="com.iticbcn.yerayreyes.model.Jugador"/>
