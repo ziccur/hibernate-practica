@@ -9,6 +9,7 @@ public class Main {
         SessionFactory sesion = HibernateUtil.getSessionFactory();
 
         Session session = sesion.openSession();
+        EquipDAO equipDAO = new EquipDAO(sesion);
 
         session.beginTransaction();
 
