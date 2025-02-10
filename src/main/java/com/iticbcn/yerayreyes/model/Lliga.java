@@ -1,29 +1,14 @@
-package com.iticbcn.yerayreyes;
+package com.iticbcn.yerayreyes.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "LLIGA")
-public class Lliga {
+public class Lliga implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_lliga")
     private Long idLliga;
-
-    @Column(name = "nom_lliga", nullable = false)
     private String nomLliga;
-
-    @Column(name = "temporada", nullable = false)
     private String temporada;
 
-    // Constructores, getters y setters
-
+    // Constructores
     public Lliga() {
     }
 
@@ -33,7 +18,6 @@ public class Lliga {
     }
 
     // Getters y Setters
-
     public Long getIdLliga() {
         return idLliga;
     }

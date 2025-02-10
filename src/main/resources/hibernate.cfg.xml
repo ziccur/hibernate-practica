@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuración de la base de datos -->
+        <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mariadb://localhost:3306/nombre_basedatos</property>
+        <property name="hibernate.connection.username">usuario</property>
+        <property name="hibernate.connection.password">contraseña</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MariaDBDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mapeo de recursos para la entidad Lliga -->
+        <mapping resource="com/iticbcn/yerayreyes/Lliga.hbm.xml"/>
+
+        <!-- Mapeo de clases con anotaciones -->
+        <mapping class="com.iticbcn.yerayreyes.Jugador"/>
+        <mapping class="com.iticbcn.yerayreyes.Equip"/>
+        <mapping class="com.iticbcn.yerayreyes.Classificacio"/>
+    </session-factory>
+</hibernate-configuration>

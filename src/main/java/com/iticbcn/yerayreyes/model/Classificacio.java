@@ -1,4 +1,4 @@
-package com.iticbcn.yerayreyes;
+package com.iticbcn.yerayreyes.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
