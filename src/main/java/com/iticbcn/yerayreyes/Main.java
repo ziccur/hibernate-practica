@@ -16,7 +16,7 @@ public class Main {
         EquipDAO equipDAO = new EquipDAO();
         JugadorDAO jugadorDAO = new JugadorDAO();
         LligaDAO lligaDAO = new LligaDAO();
-        
+        /* 
         Lliga lligaNova = new Lliga("prova1", "2025");
         lligaDAO.create(lligaNova);
         System.out.printf("Lliga %S afegida a la BBDD", lligaNova.getNomLliga());
@@ -31,11 +31,17 @@ public class Main {
         Jugador jugadorNou = new Jugador("Raul", "Numero1", equipNou);
         jugadorDAO.create(jugadorNou);
         System.out.printf("Jugador %S afegit a la BBDD", jugadorNou.getNom());
+        */
+        long longValue = 1;
+        Lliga lliga = lligaDAO.findById(longValue);
+        Equip equip = equipDAO.findById(1);
+        Jugador jugador = jugadorDAO.findById(longValue);
 
 
+        lliga.setNomLliga("PROVACANVI");
+        lligaDAO.update(lliga);
+        System.out.printf("Lliga %S modificada a la BBDD", lliga.getNomLliga());
 
-        String equip = equipDAO.findById(1).toString();
-        System.out.println(equip);
 
     }
 }
