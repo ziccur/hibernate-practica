@@ -16,7 +16,7 @@ public class Equip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_equip")
-    private Long idEquip;
+    private Integer idEquip;
 
     @Column(name = "nom_equip", nullable = false)
     private String nomEquip;
@@ -41,11 +41,11 @@ public class Equip {
 
     // Getters y Setters
 
-    public Long getIdEquip() {
+    public Integer getIdEquip() {
         return idEquip;
     }
 
-    public void setIdEquip(Long idEquip) {
+    public void setIdEquip(Integer idEquip) {
         this.idEquip = idEquip;
     }
 

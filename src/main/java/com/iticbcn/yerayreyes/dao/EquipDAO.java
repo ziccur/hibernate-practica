@@ -10,7 +10,7 @@ import com.iticbcn.yerayreyes.model.Equip;
 
 public class EquipDAO {
 
-    public void create(Equip equip) {
+    public static void create(Equip equip) {
         Transaction transaction = null;
         Session session = null;
         try {
@@ -26,7 +26,7 @@ public class EquipDAO {
         }
     }
 
-    public Equip findById(Long id) {
+    public static Equip findById(Integer id) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -39,7 +39,7 @@ public class EquipDAO {
         }
     }
 
-    public List<Equip> findAll() {
+    public static List<Equip> findAll() {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -52,7 +52,7 @@ public class EquipDAO {
         }
     }
 
-    public void update(Equip equip) {
+    public static void update(Equip equip) {
         Transaction transaction = null;
         Session session = null;
         try {
@@ -68,7 +68,7 @@ public class EquipDAO {
         }
     }
 
-    public void delete(Long id) {
+    public static void delete(Integer id) {
         Transaction transaction = null;
         Session session = null;
         try {
