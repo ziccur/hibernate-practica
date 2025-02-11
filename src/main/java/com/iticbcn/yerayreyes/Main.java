@@ -44,11 +44,13 @@ public class Main {
         System.out.printf("Lliga %S modificada a la BBDD", lliga.getNomLliga());
         */
 
-        lligaDAO.findAll().forEach(lliga1 -> System.out.println(lliga1.getNomLliga()));
+        /*lligaDAO.findAll().forEach(lliga1 -> System.out.println(lliga1.getNomLliga()));
         equipDAO.create(new Equip("Equip2", "Canada", lliga));
         equipDAO.findAll().forEach(equip1 -> System.out.println(equip1.getNomEquip()));
         jugadorDAO.create(new Jugador("Prova2", "prova3", equip));
         jugadorDAO.findAll().forEach(jugador1 -> System.out.println(jugador1.getNom()));
-
+        */
+        Jugador jugador2 = jugadorDAO.findById((long)2);
+        jugadorDAO.delete(jugador2.getIdJugador());
     }
 }
