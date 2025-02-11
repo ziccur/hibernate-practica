@@ -14,8 +14,6 @@ public class Main {
         JugadorDAO jugadorDAO = new JugadorDAO();
         LligaDAO lligaDAO = new LligaDAO();
 
-        equipDAO.findAll().forEach(lliga1 -> System.out.println(lliga1.getNomEquip()));
-        System.out.println(equipDAO.count());
-
+        
     }
 }
