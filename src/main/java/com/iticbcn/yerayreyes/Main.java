@@ -32,16 +32,23 @@ public class Main {
         jugadorDAO.create(jugadorNou);
         System.out.printf("Jugador %S afegit a la BBDD", jugadorNou.getNom());
         */
+
         long longValue = 1;
         Lliga lliga = lligaDAO.findById(longValue);
         Equip equip = equipDAO.findById(1);
         Jugador jugador = jugadorDAO.findById(longValue);
 
 
-        lliga.setNomLliga("PROVACANVI");
+        /*lliga.setNomLliga("PROVACANVI");
         lligaDAO.update(lliga);
         System.out.printf("Lliga %S modificada a la BBDD", lliga.getNomLliga());
+        */
 
+        lligaDAO.findAll().forEach(lliga1 -> System.out.println(lliga1.getNomLliga()));
+        equipDAO.create(new Equip("Equip2", "Canada", lliga));
+        equipDAO.findAll().forEach(equip1 -> System.out.println(equip1.getNomEquip()));
+        jugadorDAO.create(new Jugador("Prova2", "prova3", equip));
+        jugadorDAO.findAll().forEach(jugador1 -> System.out.println(jugador1.getNom()));
 
     }
 }
