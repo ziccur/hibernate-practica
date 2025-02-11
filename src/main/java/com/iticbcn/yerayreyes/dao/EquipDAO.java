@@ -1,5 +1,6 @@
 package com.iticbcn.yerayreyes.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -31,19 +32,6 @@ public class EquipDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             return session.get(Equip.class, id);
-        } catch (Exception e) {
-            System.out.println("Error en EquipDAO: " + e.getMessage());
-            return null;
-        } finally {
-            if (session != null) session.close();
-        }
-    }
-
-    public static List<Equip> findAll() {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            return session.createQuery("FROM Equip", Equip.class).list();
         } catch (Exception e) {
             System.out.println("Error en EquipDAO: " + e.getMessage());
             return null;
@@ -86,4 +74,33 @@ public class EquipDAO {
             if (session != null) session.close();
         }
     }
+
+    public static long count() {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "SELECT COUNT(e) FROM Equip e";
+            return (Long) session.createQuery(hql).uniqueResult();
+        } catch (Exception e) {
+            System.out.println("Error en EquipDAO: " + e.getMessage());
+            return 0;
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
+    public static List<Equip> findAll() {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "FROM Equip";
+            return session.createQuery(hql, Equip.class).list();
+        } catch (Exception e) {
+            System.out.println("Error en EquipDAO: " + e.getMessage());
+            return new ArrayList<>();
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
 }

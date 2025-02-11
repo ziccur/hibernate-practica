@@ -1,5 +1,6 @@
 package com.iticbcn.yerayreyes.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -31,19 +32,6 @@ public class ClassificacioDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             return session.get(Classificacio.class, id);
-        } catch (Exception e) {
-            System.out.println("Error en ClassificacioDAO: " + e.getMessage());
-            return null;
-        } finally {
-            if (session != null) session.close();
-        }
-    }
-
-    public List<Classificacio> findAll() {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            return session.createQuery("FROM Classificacio", Classificacio.class).list();
         } catch (Exception e) {
             System.out.println("Error en ClassificacioDAO: " + e.getMessage());
             return null;
@@ -86,5 +74,34 @@ public class ClassificacioDAO {
             if (session != null) session.close();
         }
     }
+
+    public static long count() {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "SELECT COUNT(c) FROM Classificacio c";
+            return (Long) session.createQuery(hql).uniqueResult();
+        } catch (Exception e) {
+            System.out.println("Error en ClassificacioDAO: " + e.getMessage());
+            return 0;
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
+    public static List<Classificacio> findAll() {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "FROM Classificacio";
+            return session.createQuery(hql, Classificacio.class).list();
+        } catch (Exception e) {
+            System.out.println("Error en ClassificacioDAO: " + e.getMessage());
+            return new ArrayList<>();
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
 }
 

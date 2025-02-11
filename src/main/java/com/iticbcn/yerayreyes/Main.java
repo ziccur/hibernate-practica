@@ -49,8 +49,9 @@ public class Main {
         equipDAO.findAll().forEach(equip1 -> System.out.println(equip1.getNomEquip()));
         jugadorDAO.create(new Jugador("Prova2", "prova3", equip));
         jugadorDAO.findAll().forEach(jugador1 -> System.out.println(jugador1.getNom()));
-        */
+        
         Jugador jugador2 = jugadorDAO.findById((long)2);
         jugadorDAO.delete(jugador2.getIdJugador());
+        */
     }
 }

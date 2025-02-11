@@ -1,5 +1,6 @@
 package com.iticbcn.yerayreyes.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -31,19 +32,6 @@ public class LligaDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             return session.get(Lliga.class, id);
-        } catch (Exception e) {
-            System.out.println("Error en LligaDAO: " + e.getMessage());
-            return null;
-        } finally {
-            if (session != null) session.close();
-        }
-    }
-
-    public List<Lliga> findAll() {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            return session.createQuery("FROM Lliga", Lliga.class).list();
         } catch (Exception e) {
             System.out.println("Error en LligaDAO: " + e.getMessage());
             return null;
@@ -86,4 +74,33 @@ public class LligaDAO {
             if (session != null) session.close();
         }
     }
+
+    public static long count() {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "SELECT COUNT(l) FROM Lliga l";
+            return (Long) session.createQuery(hql).uniqueResult();
+        } catch (Exception e) {
+            System.out.println("Error en LligaDAO: " + e.getMessage());
+            return 0;
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
+    public static List<Lliga> findAll() {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "FROM Lliga";
+            return session.createQuery(hql, Lliga.class).list();
+        } catch (Exception e) {
+            System.out.println("Error en LligaDAO: " + e.getMessage());
+            return new ArrayList<>();
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
 }
