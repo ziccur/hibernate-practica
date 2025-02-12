@@ -7,8 +7,10 @@ import com.iticbcn.yerayreyes.dao.ClassificacioDAO;
 import com.iticbcn.yerayreyes.dao.EquipDAO;
 import com.iticbcn.yerayreyes.dao.JugadorDAO;
 import com.iticbcn.yerayreyes.dao.LligaDAO;
+import com.iticbcn.yerayreyes.model.Classificacio;
 import com.iticbcn.yerayreyes.model.Equip;
 import com.iticbcn.yerayreyes.model.Jugador;
+import com.iticbcn.yerayreyes.model.Lliga;
 
 public class DeleteData {
 
@@ -87,11 +89,60 @@ public class DeleteData {
     }
 
     public static void eliminarClassificacio(){
-        // Implement the logic to delete a classification
+
+        ArrayList<Classificacio> classificacions = new ArrayList<>(classificacioDAO.findAll());
+        if (classificacions.isEmpty()) {
+            System.out.println("No hi ha classificacions per eliminar");
+            return;
+        }
+        
+        System.out.println("Selecciona el ID de la classificacio que vols eliminar:");
+        for(Classificacio classificacio : classificacions){
+            System.out.println(classificacio.toString());
+        }
+
+        System.out.print("Id de la classificacio: ");
+        int numClassificacio = Integer.parseInt(Entrada.readLine());
+
+        for(Classificacio classificacio : classificacions){
+            if(classificacio.getIdClassificacio() == numClassificacio){
+                classificacioDAO.delete((long)numClassificacio);
+                System.out.println("Classificacio eliminada correctament");
+                return;
+            }
+        }
+
+        System.err.println("No s'ha trobat la classificacio amb ID " + numClassificacio);
+
     }
 
     public static void eliminarLliga(){
-        // Implement the logic to delete a league
+
+        ArrayList<Lliga> lligues = new ArrayList<>(lligaDAO.findAll());
+        if (lligues.isEmpty()) {
+            System.out.println("No hi ha lligues per eliminar");
+            return;
+        }
+
+        System.out.println("RECORDA EL MODO CASCADE, ES BORRARAN TOTS ELS QUE DEPENGUIN D'AQUESTA LLIGA");
+        System.out.println("Selecciona el ID de la lliga que vols eliminar:");
+
+        for(Lliga lliga : lligues){
+            System.out.println(lliga.toString());
+        }
+
+        System.out.print("Id de la lliga: ");
+        int numLliga = Integer.parseInt(Entrada.readLine());
+
+        for(Lliga lliga : lligues){
+            if(lliga.getIdLliga() == numLliga){
+                lligaDAO.delete((long)numLliga);
+                System.out.println("Lliga eliminada correctament");
+                return;
+            }
+        }
+
+        System.err.println("No s'ha trobat la lliga amb ID " + numLliga);
     }
 
 }
