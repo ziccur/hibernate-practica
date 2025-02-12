@@ -99,7 +99,6 @@ public class CreateData {
     }
 
     public static void crearClassificacio(){
-        Equip equip;
         Integer punts;
         Integer partitsJugats;
         Integer victories;
