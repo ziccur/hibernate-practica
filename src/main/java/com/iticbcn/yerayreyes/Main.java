@@ -3,6 +3,7 @@ package com.iticbcn.yerayreyes;
 import org.hibernate.SessionFactory;
 
 import com.iticbcn.yerayreyes.dao.ClassificacioDAO;
+import com.iticbcn.yerayreyes.dao.Dao;
 import com.iticbcn.yerayreyes.dao.EquipDAO;
 import com.iticbcn.yerayreyes.dao.JugadorDAO;
 import com.iticbcn.yerayreyes.dao.LligaDAO;
@@ -14,6 +15,97 @@ public class Main {
         JugadorDAO jugadorDAO = new JugadorDAO();
         LligaDAO lligaDAO = new LligaDAO();
 
+        System.out.println("############################");
+        System.out.println("##  Selecciona una opció  ##");
+        System.out.println("############################\n");
+        System.out.println("1. Gestionar Lliga");
+        System.out.println("2. Gestionar Equip");
+        System.out.println("3. Gestionar Jugador");
+        System.out.println("4. Gestionar Classificació");
+        System.out.println("5. Sortir");
+        System.out.println("############################\n");
+        System.out.print("Opció: ");
+        int opcio;
+
+        try {
+            opcio = Integer.parseInt(Entrada.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Has d'introduir un número");
+            return;
+        }
+
+        if (opcio < 1 || opcio > 5) {
+            System.out.println("Error: Has d'introduir un número entre 1 i 5");
+            return;
+        }
+
+        Dao dao = null;
+        String escollida;
+
+        switch (opcio) {
+            case 1:
+                escollida = "Lliga";
+                dao = lligaDAO;
+                break;
+            case 2:
+                escollida = "Equip";
+                dao = equipDAO;
+                break;
+            case 3:
+                escollida = "Jugador";
+                dao = jugadorDAO;
+                break;
+            case 4:
+                escollida = "Classificació";
+                dao = classificacioDAO;
+                break;
+            case 5:
+                System.out.println("Sortint...");
+                return;
+            default:
+                throw new AssertionError();
+        }    
         
+        System.out.println("############################");
+        System.out.printf(" 1.  Crear %s\n", escollida);
+        System.out.printf(" 2.  Modificar %s\n", escollida);
+        System.out.printf(" 3.  Eliminar %s\n", escollida);
+        System.out.printf(" 4.  Consultar %s\n", escollida);
+        System.out.printf(" 5.  Llistar %S\n", escollida);
+        System.out.println("############################");
+        System.out.print("Opció: ");
+
+        try {
+            opcio = Integer.parseInt(Entrada.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Has d'introduir un número valid");
+            return;
+        }
+
+        if (opcio < 1 || opcio > 5) {
+            System.out.println("Error: Has d'introduir un número entre 1 i 5");
+            return;
+        }
+
+        switch (opcio) {
+            case 1:
+                System.out.println("Has escollit crear");
+                break;
+            case 2:
+                System.out.println("Has escollit modificar");
+                break;
+            case 3:
+                System.out.println("Has escollit eliminar");
+                break;
+            case 4:
+                System.out.println("Has escollit consultar");
+                break;
+            case 5:
+                System.out.println("Has escollit llistar");
+                break;
+            default:
+                throw new AssertionError();
+        }
+
     }
 }
