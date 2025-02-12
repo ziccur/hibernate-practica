@@ -7,6 +7,11 @@ import com.iticbcn.yerayreyes.dao.Dao;
 import com.iticbcn.yerayreyes.dao.EquipDAO;
 import com.iticbcn.yerayreyes.dao.JugadorDAO;
 import com.iticbcn.yerayreyes.dao.LligaDAO;
+import com.iticbcn.yerayreyes.interactiveContent.CreateData;
+import com.iticbcn.yerayreyes.interactiveContent.DeleteData;
+import com.iticbcn.yerayreyes.interactiveContent.ListAllData;
+import com.iticbcn.yerayreyes.interactiveContent.ReadData;
+import com.iticbcn.yerayreyes.interactiveContent.UpdateData;
 public class Main {
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -88,11 +93,26 @@ public class Main {
         }
 
         switch (opcio2) {
-            case 1 -> System.out.println("Has escollit crear");
-            case 2 -> System.out.println("Has escollit modificar");
-            case 3 -> System.out.println("Has escollit eliminar");
-            case 4 -> System.out.println("Has escollit consultar");
-            case 5 -> System.out.println("Has escollit llistar");
+            case 1 -> {
+                System.out.println("Has escollit crear\n");
+                CreateData.crearData(opcio);
+            }
+            case 2 -> {
+                System.out.println("Has escollit modificar");
+                UpdateData.updateData(opcio);
+            }
+            case 3 -> {
+                System.out.println("Has escollit eliminar");
+                DeleteData.eliminarData(opcio);
+            }
+            case 4 -> {
+                System.out.println("Has escollit consultar");
+                ReadData.readData(opcio);
+            }
+            case 5 -> {
+                System.out.println("Has escollit llistar");
+                ListAllData.listAllData(opcio);
+            }
             default -> throw new AssertionError();
         }
 
