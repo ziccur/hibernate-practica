@@ -43,69 +43,61 @@ public class Main {
         String escollida;
 
         switch (opcio) {
-            case 1:
+            case 1 -> {
                 escollida = "Lliga";
                 dao = lligaDAO;
-                break;
-            case 2:
+            }
+            case 2 -> {
                 escollida = "Equip";
                 dao = equipDAO;
-                break;
-            case 3:
+            }
+            case 3 -> {
                 escollida = "Jugador";
                 dao = jugadorDAO;
-                break;
-            case 4:
+            }
+            case 4 -> {
                 escollida = "Classificació";
                 dao = classificacioDAO;
-                break;
-            case 5:
+            }
+            case 5 -> {
                 System.out.println("Sortint...");
                 return;
-            default:
-                throw new AssertionError();
+            }
+            default -> throw new AssertionError();
         }    
-        
+        int opcio2;
         System.out.println("############################");
         System.out.printf(" 1.  Crear %s\n", escollida);
         System.out.printf(" 2.  Modificar %s\n", escollida);
         System.out.printf(" 3.  Eliminar %s\n", escollida);
         System.out.printf(" 4.  Consultar %s\n", escollida);
-        System.out.printf(" 5.  Llistar %S\n", escollida);
+        System.out.printf(" 5.  Llistar %s\n", escollida);
         System.out.println("############################");
         System.out.print("Opció: ");
 
         try {
-            opcio = Integer.parseInt(Entrada.readLine());
+            opcio2 = Integer.parseInt(Entrada.readLine());
         } catch (NumberFormatException e) {
             System.out.println("Error: Has d'introduir un número valid");
             return;
         }
 
-        if (opcio < 1 || opcio > 5) {
+        if (opcio2 < 1 || opcio2 > 5) {
             System.out.println("Error: Has d'introduir un número entre 1 i 5");
             return;
         }
 
-        switch (opcio) {
-            case 1:
-                System.out.println("Has escollit crear");
-                break;
-            case 2:
-                System.out.println("Has escollit modificar");
-                break;
-            case 3:
-                System.out.println("Has escollit eliminar");
-                break;
-            case 4:
-                System.out.println("Has escollit consultar");
-                break;
-            case 5:
-                System.out.println("Has escollit llistar");
-                break;
-            default:
-                throw new AssertionError();
+        switch (opcio2) {
+            case 1 -> System.out.println("Has escollit crear");
+            case 2 -> System.out.println("Has escollit modificar");
+            case 3 -> System.out.println("Has escollit eliminar");
+            case 4 -> System.out.println("Has escollit consultar");
+            case 5 -> System.out.println("Has escollit llistar");
+            default -> throw new AssertionError();
         }
+
+        
+
 
     }
 }
