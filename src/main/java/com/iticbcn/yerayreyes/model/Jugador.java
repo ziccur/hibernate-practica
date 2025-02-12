@@ -1,6 +1,5 @@
 package com.iticbcn.yerayreyes.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +24,7 @@ public class Jugador {
     @Column(name = "cognoms", nullable = false)
     private String cognoms;
 
-    @ManyToOne (cascade= CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_equip", nullable = true)
     private Equip equip;
 
