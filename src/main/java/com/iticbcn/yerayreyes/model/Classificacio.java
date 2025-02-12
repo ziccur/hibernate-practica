@@ -1,5 +1,6 @@
 package com.iticbcn.yerayreyes.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class Classificacio {
     @Column(name = "id_classificacio")
     private Long idClassificacio;
 
-    @ManyToOne
+    @ManyToOne (cascade= CascadeType.PERSIST)
     @JoinColumn(name = "id_equip", nullable = false)
     private Equip equip;
 

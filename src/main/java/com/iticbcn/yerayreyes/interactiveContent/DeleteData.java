@@ -66,7 +66,6 @@ public class DeleteData {
             return;
         }
         
-        System.out.println("RECORDA EL MODO CASCADE, ES BORRARAN TOTS ELS QUE DEPENGUIN D'AQUEST EQUIP");
         System.out.println("Selecciona el ID de l'equip que vols eliminar:");
         
         for (int i = 0; i < equips.size(); i++) {
@@ -124,7 +123,6 @@ public class DeleteData {
             return;
         }
 
-        System.out.println("RECORDA EL MODO CASCADE, ES BORRARAN TOTS ELS QUE DEPENGUIN D'AQUESTA LLIGA");
         System.out.println("Selecciona el ID de la lliga que vols eliminar:");
 
         for(Lliga lliga : lligues){
