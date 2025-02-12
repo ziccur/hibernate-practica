@@ -8,9 +8,9 @@ import com.iticbcn.yerayreyes.dao.LligaDAO;
 public class CreateData {
 
     ClassificacioDAO classificacioDAO = new ClassificacioDAO();
-        EquipDAO equipDAO = new EquipDAO();
-        JugadorDAO jugadorDAO = new JugadorDAO();
-        LligaDAO lligaDAO = new LligaDAO();
+    EquipDAO equipDAO = new EquipDAO();
+    JugadorDAO jugadorDAO = new JugadorDAO();
+    LligaDAO lligaDAO = new LligaDAO();
 
     public static boolean crearData(int opcio){
 
