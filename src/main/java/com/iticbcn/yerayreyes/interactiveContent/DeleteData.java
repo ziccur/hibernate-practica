@@ -1,46 +1,97 @@
 package com.iticbcn.yerayreyes.interactiveContent;
 
+import java.util.ArrayList;
+
+import com.iticbcn.yerayreyes.Entrada;
 import com.iticbcn.yerayreyes.dao.ClassificacioDAO;
 import com.iticbcn.yerayreyes.dao.EquipDAO;
 import com.iticbcn.yerayreyes.dao.JugadorDAO;
 import com.iticbcn.yerayreyes.dao.LligaDAO;
+import com.iticbcn.yerayreyes.model.Equip;
+import com.iticbcn.yerayreyes.model.Jugador;
 
 public class DeleteData {
 
-    ClassificacioDAO classificacioDAO = new ClassificacioDAO();
-    EquipDAO equipDAO = new EquipDAO();
-    JugadorDAO jugadorDAO = new JugadorDAO();
-    LligaDAO lligaDAO = new LligaDAO();
+    static ClassificacioDAO classificacioDAO = new ClassificacioDAO();
+    static EquipDAO equipDAO = new EquipDAO();
+    static JugadorDAO jugadorDAO = new JugadorDAO();
+    static LligaDAO lligaDAO = new LligaDAO();
 
-    public static boolean eliminarData(int opcio){
-
-        return switch (opcio) {
+    public static void eliminarData(int opcio){
+        System.out.println("############################");
+        switch (opcio) {
             case 1 -> eliminarLliga();
             case 2 -> eliminarEquip();
             case 3 -> eliminarJugador();
             case 4 -> eliminarClassificacio();
-            default -> false;
-        };
+        }
     }
     
-    public static boolean eliminarJugador(){
-        // Implement the logic to delete a player
-        return true; // Return true if the deletion was successful
+    public static void eliminarJugador(){
+
+        ArrayList<Jugador> jugadors = new ArrayList<>(jugadorDAO.findAll());
+        if (jugadors.isEmpty()) {
+            System.out.println("No hi ha jugadors per eliminar");
+            System.exit(1);
+        }
+
+        System.err.println("Selecciona el ID del jugador que vols eliminar:");
+        
+        for (int i = 0; i < jugadors.size(); i++) {
+            System.out.println(jugadors.get(i).toString());
+        }
+
+        System.out.print("Id del jugador: ");
+        int numJugador = Integer.parseInt(Entrada.readLine());
+
+        for(Jugador jugador : jugadors){
+            if(jugador.getIdJugador() == numJugador){
+                jugadorDAO.delete((long)numJugador);
+                System.out.println("Jugador eliminat correctament");
+                return;
+            }
+        }
+
+        System.out.println("No s'ha trobat el jugador amb ID " + numJugador);
     }
 
-    public static boolean eliminarEquip(){
-        // Implement the logic to delete a team
-        return true; // Return true if the deletion was successful
+    public static void eliminarEquip(){
+
+
+        ArrayList<Equip> equips = new ArrayList<>(equipDAO.findAll());
+        if (equips.isEmpty()) {
+            System.out.println("No hi ha equips per eliminar");
+            return;
+        }
+        
+        System.out.println("RECORDA EL MODO CASCADE, ES BORRARAN TOTS ELS QUE DEPENGUIN D'AQUEST EQUIP");
+        System.out.println("Selecciona el ID de l'equip que vols eliminar:");
+        
+        for (int i = 0; i < equips.size(); i++) {
+            System.out.println(equips.get(i).toString());
+        }
+
+        System.out.print("Id de l'equip: ");
+        int numEquip = Integer.parseInt(Entrada.readLine());
+
+        for(Equip equip : equips){
+            if(equip.getIdEquip() == numEquip){
+                equipDAO.delete(numEquip);
+                System.out.println("Equip eliminat correctament");
+                return;
+            }
+        }
+
+        System.err.println("No s'ha trobat l'equip amb ID " + numEquip);
+
     }
 
-    public static boolean eliminarClassificacio(){
+    public static void eliminarClassificacio(){
         // Implement the logic to delete a classification
-        return true; // Return true if the deletion was successful
     }
 
-    public static boolean eliminarLliga(){
+    public static void eliminarLliga(){
         // Implement the logic to delete a league
-        return true; // Return true if the deletion was successful
     }
 
 }
