@@ -1,12 +1,5 @@
 package com.iticbcn.yerayreyes;
 
-import org.hibernate.SessionFactory;
-
-import com.iticbcn.yerayreyes.dao.ClassificacioDAO;
-import com.iticbcn.yerayreyes.dao.Dao;
-import com.iticbcn.yerayreyes.dao.EquipDAO;
-import com.iticbcn.yerayreyes.dao.JugadorDAO;
-import com.iticbcn.yerayreyes.dao.LligaDAO;
 import com.iticbcn.yerayreyes.interactiveContent.CreateData;
 import com.iticbcn.yerayreyes.interactiveContent.DeleteData;
 import com.iticbcn.yerayreyes.interactiveContent.ListAllData;
@@ -14,11 +7,6 @@ import com.iticbcn.yerayreyes.interactiveContent.ReadData;
 import com.iticbcn.yerayreyes.interactiveContent.UpdateData;
 public class Main {
     public static void main(String[] args) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        ClassificacioDAO classificacioDAO = new ClassificacioDAO();
-        EquipDAO equipDAO = new EquipDAO();
-        JugadorDAO jugadorDAO = new JugadorDAO();
-        LligaDAO lligaDAO = new LligaDAO();
 
         System.out.println("############################");
         System.out.println("##  Selecciona una opció  ##");
@@ -44,25 +32,19 @@ public class Main {
             return;
         }
 
-        Dao dao = null;
         String escollida;
 
         switch (opcio) {
             case 1 -> {
-                escollida = "Lliga";
-                dao = lligaDAO;
-            }
+                escollida = "Lliga";            }
             case 2 -> {
                 escollida = "Equip";
-                dao = equipDAO;
             }
             case 3 -> {
                 escollida = "Jugador";
-                dao = jugadorDAO;
             }
             case 4 -> {
                 escollida = "Classificació";
-                dao = classificacioDAO;
             }
             case 5 -> {
                 System.out.println("Sortint...");

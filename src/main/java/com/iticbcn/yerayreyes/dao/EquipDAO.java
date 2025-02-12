@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import com.iticbcn.yerayreyes.HibernateUtil;
 import com.iticbcn.yerayreyes.model.Equip;
 
-public class EquipDAO extends Dao {
+public class EquipDAO {
 
     public static void create(Equip equip) {
         Transaction transaction = null;

@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import com.iticbcn.yerayreyes.HibernateUtil;
 import com.iticbcn.yerayreyes.model.Classificacio;
 
-public class ClassificacioDAO extends Dao{
+public class ClassificacioDAO{
 
     public void create(Classificacio classificacio) {
         Transaction transaction = null;
